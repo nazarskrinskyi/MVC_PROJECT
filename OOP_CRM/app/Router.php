@@ -3,7 +3,7 @@ namespace OOP_CRM\app;
 
 class Router
 {
-    private $routes;
+    private array $routes;
     public function __construct()
     {
         $this->routes = [
@@ -38,7 +38,6 @@ class Router
                 $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
                 $_GET['id'] = $matches['id'];
                 $_GET['page'] = $matches['id'];
-
                 break;
             }
         }
