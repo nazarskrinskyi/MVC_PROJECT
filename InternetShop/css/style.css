@@ -1,0 +1,87 @@
+body {
+    background: white;
+}
+
+/* Header Styling*/
+header .header {
+    background: black;
+}
+
+header .icon {
+    margin-right: 20px;
+}
+
+header .header-title {
+    font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: bold;
+    width: 350px;
+    padding-right: -50px;
+}
+
+
+/* Wrapper Styling */
+
+/* Wrapper-Sidebar Styling */
+
+.wrapper .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.wrapper .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+}
+
+.wrapper .sidebar a:hover {
+    color: steelblue;
+    font-weight: bold;
+}
+
+.wrapper .sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.wrapper .sidebar .home-link {
+    position: absolute;
+    top: 0;
+    left: -30px;
+    margin-right: 50px;
+}
+
+
+/* Wrapper-Main-content Styling */
+
+.wrapper.shadow-background {
+    background: lightgray;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
