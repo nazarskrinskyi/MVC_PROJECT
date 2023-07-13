@@ -7,14 +7,15 @@ namespace InternetShop\app\controllers;
 class HomeController {
 
     /**
-     * @return void
+     * @return bool
      */
-    public function index(): void
+    public function index(): bool
     {
-        if (file_exists("../app/views/index.php")){;
-            include_once "../app/views/index.php";
+        if (file_exists("app/views/index.php")){;
+            include_once "app/views/index.php";
+            return true;
         }
-        else include_once "../app/views/errors/404.php";
-
+        else include_once "app/views/errors/404.php";
+        return false;
     }
 }

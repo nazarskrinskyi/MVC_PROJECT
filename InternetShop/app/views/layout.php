@@ -13,9 +13,9 @@
             <button type="button" onclick="openNav()" id="sidebarCollapse" class="open-btn btn btn-dark icon">
                 <i class=" fas fa-bars" style="color: white;font-size: 35px"></i>
             </button>
-            <a href="/<?= APP_BASE_PATH ?>/www/"><i class="icon fa-sharp fa-solid fa-shop"
+            <a href="/<?= APP_BASE_PATH ?>"><i class="icon fa-sharp fa-solid fa-shop"
                                                     style="color: white;font-size: 35px;"></i></a>
-            <h1 class="header-title text-white ">MY SHOP</h1>
+            <h1 class="header-title text-white " style="font-family: American Typewriter, cursive">MY SHOP</h1>
             <div class="icon input-group mb-3">
                 <input type="text" class="form-control" placeholder="I am searching..."
                        aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -24,19 +24,18 @@
                 </div>
             </div>
 
-            <a href="#"><i class="icon fa-solid fa-user" style="color: white;font-size: 35px;"></i></a>
+            <a href="/<?= APP_BASE_PATH ?>/auth/login">
+                <i class="icon fa-solid fa-user" style="color: white;font-size: 35px;"></i>
+            </a>
             <a href="#"><i class="icon fas fa-shopping-cart" style="color: white;font-size: 35px;"></i></a>
         </div>
     </nav>
 </header>
 
-<main>
+<main class="body">
     <div class="wrapper">
         <div id="sidebar" class="sidebar">
-            <a href="/<?= APP_BASE_PATH ?>/www/" class="home-link"><h3
-                        style="font-family: American Typewriter, cursive">
-                    <i class="icon fa-sharp fa-solid fa-house" style="color: white;font-size: 25px;"></i> MY SHOP</h3>
-            </a>
+            <a href="/<?= APP_BASE_PATH ?>" class="home-link"><i class="icon fa-sharp fa-solid fa-house" style="color: white;font-size: 40px;"></i></a>
             <h1 class="p-4 text-danger">MENU</h1>
             <ul>
                 <li></li>
@@ -49,8 +48,6 @@
         </div>
     </div>
 </main>
-
-<script type="text/javascript" src="../js/sidebarCollapse.js"></script>
 
 </body>
 </html>
