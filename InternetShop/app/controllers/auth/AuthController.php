@@ -1,14 +1,17 @@
 <?php
 
 namespace InternetShop\app\controllers\auth;
+use InternetShop\app\models\auth\AuthUser;
+
 /**
  * login\logout\register page controller
  */
-class AuthController {
+class AuthController
+{
 
-    public function login():void
+    public function login(): void
     {
-            include_once "app/views/auth/login.php";
+        include_once "app/views/auth/login.php";
     }
 
     public function register():void
@@ -28,17 +31,17 @@ class AuthController {
 
             if (strlen($username) < 4) {
                 $_SESSION['err_msg'] = " Username must be > than 3 symbols ";
-                header("Location: /" . APP_BASE_PATH . "/auth/register");
+                header("Location: /" . APP_BASE_PATH . "/auth/register/");
                 die();
             }
             if ($authModel->findByEmail($email) !== false){
                 $_SESSION['err_msg'] = " Such email is already exist! ";
-                header("Location: /" . APP_BASE_PATH . "/auth/register");
+                header("Location: /" . APP_BASE_PATH . "/auth/register/");
                 die();
             }
             if ($pass !== $passVer) {
                 $_SESSION['err_msg'] = " Incorrect password verification ";
-                header("Location: /" . APP_BASE_PATH . "/auth/register");
+                header("Location: /" . APP_BASE_PATH . "/auth/register/");
                 die();
             } else {
                 $userModel = new AuthUser();
@@ -47,10 +50,10 @@ class AuthController {
                         'username' => $username,
                         'email' => $email,
                         'password' => $pass,
-                        'role' => START_ROLE
+                        'is_admin' => 0
                     ];
-                $userModel->register($data['username'], $data['email'], $data["password"], $data['role']);
-                header("Location: /" . APP_BASE_PATH . "/auth/login");
+                $userModel->register($data['username'], $data['email'], $data["password"], $data['is_admin']);
+                header("Location: /" . APP_BASE_PATH . "/auth/login/");
             }
         }
     }
@@ -60,7 +63,7 @@ class AuthController {
         session_start();
         session_unset();
         session_destroy();
-        header("Location: /" . APP_BASE_PATH . "/auth/login");
+        header("Location: /" . APP_BASE_PATH . "/auth/login/");
 
     }
 
@@ -74,19 +77,22 @@ class AuthController {
             $remember = trim($_POST['remember']) ?? '';
 
             $user = $authModel->findByEmail($email);
+
             if (!$user) {
                 $_SESSION['err_msg'] = " Incorrect data in fields! ";
-                header("Location: /" . APP_BASE_PATH . "/auth/login");
+                header("Location: /" . APP_BASE_PATH . "/auth/login/");
                 die();
             }
+
             if (!password_verify($password, $user['password'])) {
                 $_SESSION['err_msg'] = " Incorrect data in fields! ";
-                header("Location: /" . APP_BASE_PATH . "/auth/login");
+                header("Location: /" . APP_BASE_PATH . "/auth/login/");
                 die();
+
             } else {
                 session_start();
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_role'] = $user['role'];
+                $_SESSION['is_admin'] = $user['is_admin'];
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['username'] = $user['username'];
 

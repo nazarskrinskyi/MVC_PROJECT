@@ -3,12 +3,11 @@
 namespace InternetShop\app\controllers\users;
 
 use InternetShop\app\models\auth\AuthUser;
+use InternetShop\app\models\users\UserModel;
 
 class UserController
 {
-
     private Check $check;
-
     public function __construct()
     {
         $userRole = $_SESSION['user_role'] ?? null;

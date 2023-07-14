@@ -1,0 +1,31 @@
+{
+  "require": {
+    "phpmailer/phpmailer": "^6.7",
+    "ext-pdo": "*",
+    "ext-mbstring": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "OOP_CRM\\app\\models\\": "../OOP_CRM/app/models/",
+      "OOP_CRM\\app\\": "../OOP_CRM/app/",
+      "OOP_CRM\\app\\controllers\\": "../OOP_CRM/app/controllers/",
+      "OOP_CRM\\app\\controllers\\users\\": "../OOP_CRM/app/controllers/users/",
+      "OOP_CRM\\app\\controllers\\auth\\": "../OOP_CRM/app/controllers/auth/",
+      "OOP_CRM\\app\\controllers\\pages\\": "../OOP_CRM/app/controllers/pages/",
+      "OOP_CRM\\app\\controllers\\roles\\": "../OOP_CRM/app/controllers/roles/",
+      "OOP_CRM\\app\\controllers\\todo\\category\\": "../OOP_CRM/app/controllers/todo/category",
+      "OOP_CRM\\app\\controllers\\todo\\tasks\\": "../OOP_CRM/app/controllers/todo/tasks",
+      "OOP_CRM\\app\\models\\roles\\": "../OOP_CRM/app/models/roles",
+      "OOP_CRM\\app\\models\\users\\": "../OOP_CRM/app/models/users",
+      "OOP_CRM\\app\\models\\pages\\": "../OOP_CRM/app/models/pages",
+      "InternetShop\\app\\controllers\\": "../InternetShop/app/controllers/",
+      "InternetShop\\app\\controllers\\auth\\": "../InternetShop/app/controllers/auth/",
+      "InternetShop\\app\\controllers\\categories\\": "../InternetShop/app/controllers/categories/",
+      "InternetShop\\app\\controllers\\users\\": "../InternetShop/app/controllers/users/",
+      "InternetShop\\app\\": "../InternetShop/app/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.2"
+  }
+}

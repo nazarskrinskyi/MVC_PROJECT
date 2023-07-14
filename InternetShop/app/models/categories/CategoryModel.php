@@ -32,12 +32,25 @@ class CategoryModel
         `description` VARCHAR(255) NOT NULL,
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP                               
-         )";
+         ) ENGINE = MyISAM;";
 
         try {
             $this->db->prepare($sql)->execute();
             return true;
         } catch (PDOException $exception) {
+            return false;
+        }
+    }
+
+    public function readAllId(): array|bool
+    {
+        $sql = "SELECT categories.id FROM `categories`";
+        try {
+            $query = $this->db->prepare($sql);
+            $query->execute([$this->user_id]);
+            return $query->fetchAll(PDO::FETCH_ASSOC) ?? false;
+        } catch (PDOException $exception) {
+            echo "Message->[" . $exception->getMessage() . "] File->[" . $exception->getFile() . "] Line->[" . $exception->getLine() . "]";
             return false;
         }
     }
@@ -97,17 +110,16 @@ class CategoryModel
         }
     }
 
-    public function createCategory(string $title, string $description): bool
+    public function createCategory(string $title, $parent_id, string $description): bool
     {
-        $sql = "INSERT INTO categories(name, description) VALUES (?,?)";
+        $sql = "INSERT INTO categories(name, parent_id, description) VALUES (?,?,?)";
 
         try {
             $query = $this->db->prepare($sql);
-            $query->execute([$title, $description]);
+            $query->execute([$title, $parent_id, $description]);
             return true;
         } catch (PDOException $exception) {
-            echo "Message->[" . $exception->getMessage() . "] File->[" . $exception->getFile(
-                ) . "] Line->[" . $exception->getLine() . "]";
+            echo "Message->[" . $exception->getMessage() . "] File->[" . $exception->getFile() . "] Line->[" . $exception->getLine() . "]";
             return false;
         }
     }

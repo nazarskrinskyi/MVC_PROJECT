@@ -7,7 +7,7 @@ use OOP_CRM\app\models\todo\category\CategoryModel;
 
 class CategoryController
 {
-    private $check;
+    private Check $check;
     public function __construct()
     {
         $userRole    = filter_var($_SESSION['user_role'], FILTER_SANITIZE_NUMBER_INT) ?? null;

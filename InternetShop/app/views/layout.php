@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<?php if (!$_SESSION['user_id']): ?>
+<?php if ($_SESSION['is_admin'] != 1): ?>
 
     <header>
         <nav id="header" class="header row p-2">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <a href="/<?= APP_BASE_PATH ?>/auth/login">
+                <a href="/<?= APP_BASE_PATH ?>/auth/login/">
                     <i class="icon fa-solid fa-user" style="color: white;font-size: 35px;"></i>
                 </a>
                 <a href="#"><i class="icon fas fa-shopping-cart" style="color: white;font-size: 35px;"></i></a>
@@ -58,7 +58,7 @@
     <div class="row">
         <div class="sidebar col-md-3">
             <div class=" d-flex flex-column text-white bg-dark" style="min-height: 950px;">
-                <a href="/<?= APP_BASE_PATH ?>" class="header-title text-white text-decoration-none">
+                <a href="/<?= APP_BASE_PATH ?>/" class="header-title text-white text-decoration-none">
                     <svg class="bi me-2" width="40" height="20">
                         <use xlink:href="#bootstrap"></use>
                     </svg>
@@ -66,39 +66,41 @@
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
-
                     <li>
-                        <a href="/<?= APP_BASE_PATH ?>/users/index"
-                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/users/index') ?>">
+                        <a href="/<?= APP_BASE_PATH ?>/users/index/"
+                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/users/index/') ?>">
                             <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="/<?= APP_BASE_PATH ?>/users/index"></use>
+                                <use xlink:href="/<?= APP_BASE_PATH ?>/users/index/"></use>
                             </svg>
                             Users
                         </a>
                     </li>
+
                     <li>
-                        <a href="/<?= APP_BASE_PATH ?>/roles"
-                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/roles') ?>">
+                        <a href="/<?= APP_BASE_PATH ?>/roles/"
+                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/roles/') ?>">
                             <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="/<?= APP_BASE_PATH ?>/roles"></use>
+                                <use xlink:href="/<?= APP_BASE_PATH ?>/roles/"></use>
                             </svg>
                             Roles
                         </a>
                     </li>
+
                     <li>
-                        <a href="/<?= APP_BASE_PATH ?>/pages/index"
-                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/pages/index') ?>">
+                        <a href="/<?= APP_BASE_PATH ?>/pages/index/"
+                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/pages/index/') ?>">
                             <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="/<?= APP_BASE_PATH ?>/pages/index"></use>
+                                <use xlink:href="/<?= APP_BASE_PATH ?>/pages/index/"></use>
                             </svg>
                             Pages
                         </a>
                     </li>
+
                     <li>
-                        <a href="/<?= APP_BASE_PATH ?>/category"
-                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/category') ?>">
+                        <a href="/<?= APP_BASE_PATH ?>/categories/"
+                           class="nav-link text-white <?= is_active('/' . APP_BASE_PATH . '/categories/') ?>">
                             <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="/<?= APP_BASE_PATH ?>/category"></use>
+                                <use xlink:href="/<?= APP_BASE_PATH ?>/categories/"></use>
                             </svg>
                             Categories
                         </a>
@@ -109,14 +111,15 @@
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong><?= $user_name ?></strong>
+                        <strong><?= $_SESSION['username'] ?></strong>
                     </a>
+
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="/<?= APP_BASE_PATH ?>/auth/logout">Sign out</a></li>
-                        <li><a class="dropdown-item" href="/<?= APP_BASE_PATH ?>/auth/login">Sign in</a></li>
+                        <li><a class="dropdown-item" href="/<?= APP_BASE_PATH ?>/auth/logout/">Sign out</a></li>
+                        <li><a class="dropdown-item" href="/<?= APP_BASE_PATH ?>/auth/login/">Sign in</a></li>
                     </ul>
                 </div>
             </div>

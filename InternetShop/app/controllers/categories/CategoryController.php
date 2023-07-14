@@ -17,14 +17,14 @@ class CategoryController
     {
         $this->check->requirePermission();
         $categoryModel = new CategoryModel();
-        $categories    = $categoryModel->getAllCategories();
-        include_once "app/views/todo/category/index.php";
+        $categories = $categoryModel->getAllCategories();
+        include_once "app/views/todo/categories/index.php";
     }
 
     public function create(): void
     {
         $this->check->requirePermission();
-        include_once "app/views/todo/category/createCategory.php";
+        include_once "app/views/todo/categories/createCategory.php";
     }
 
     public function store(): void
@@ -36,7 +36,7 @@ class CategoryController
             $user  = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT) ?? 0;
             $categoryModel = new CategoryModel();
             $categoryModel->createCategory($title, $desc, $user);
-            header("Location: /" . APP_BASE_PATH . "/todo/category");
+            header("Location: /" . APP_BASE_PATH . "/todo/categories/");
         }
     }
 
@@ -48,7 +48,7 @@ class CategoryController
         foreach ($allId as $id){
             if (in_array($_GET['id'],$id)){
                 $categoryModel->deleteCategory((int)$_GET['id']);
-                header("Location: /" . APP_BASE_PATH . "/todo/category");
+                header("Location: /" . APP_BASE_PATH . "/todo/categories/");
                 die();
             }
         }
@@ -64,9 +64,9 @@ class CategoryController
         if (!$category){
             http_response_code(404);
             include 'app/views/errors/404.php';
-            return;
+            die();
         }
-        include_once "app/views/todo/category/editCategory.php";
+        include_once "app/views/todo/categories/editCategory.php";
     }
 
     public function update(): void
@@ -79,11 +79,11 @@ class CategoryController
             $check = $categoryModel->getCategoryByTitle($title, $_GET['id']);
             if (!empty($check)){
                 $_SESSION['err_msg'] = " Such category title is already exist! ";
-                header("Location: /" . APP_BASE_PATH . "/todo/category/edit/{$_GET['id']}" );
+                header("Location: /" . APP_BASE_PATH . "/todo/categories/edit/{$_GET['id']}");
                 die();
             }
             $categoryModel->updateCategory($title, $desc, $usability, $_GET['id']);
-            header("Location: /" . APP_BASE_PATH . "/todo/category");
+            header("Location: /" . APP_BASE_PATH . "/todo/categories/");
         }
     }
 

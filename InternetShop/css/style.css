@@ -71,10 +71,21 @@ header .header-title {
     padding: 16px;
 }
 
+/* auth stylesheet*/
+.error_display {
+    border: black 2px double;
+    background: #a52834;
+    color: white;
+    text-align: center;
+    width: 700px;
+    margin: auto;
+}
+
 @media screen and (max-height: 450px) {
     .sidebar {
         padding-top: 15px;
     }
+
     .sidebar a {
         font-size: 18px;
     }

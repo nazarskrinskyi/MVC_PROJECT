@@ -10,7 +10,7 @@ use OOP_CRM\app\models\users\UserModel;
 class UsersController
 {
 
-    private $check;
+    private Check $check;
 
     public function __construct()
     {

@@ -101,8 +101,8 @@ class UserModel
         $admin = !empty($userData['is_admin']) && $userData['is_admin'] !== 0 ? 1 : 0;
         $active = isset($userData['is_active']) ? 1 : 0;
         $sql = "UPDATE `users` SET users.username = ?,
-                 users.email = ?,
-                 users.is_admin = ? WHERE users.id = ?";
+                users.email = ?,
+                users.is_admin = ? WHERE users.id = ?";
         try {
             $this->db->prepare($sql)->execute([$username,$email,$is_admin,$id]);
             return true;
@@ -127,7 +127,7 @@ class UserModel
 
     public function getAllUsersPagination(int $offset, int $limit): array|bool
     {
-        $sql = "SELECT * FROM `users` LIMIT $limit OFFSET {$offset}";
+        $sql = "SELECT * FROM `users` LIMIT $limit OFFSET '$offset'";
         try {
             $query = $this->db->prepare($sql);
             $query->execute();

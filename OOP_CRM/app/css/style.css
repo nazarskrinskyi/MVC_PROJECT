@@ -104,4 +104,6 @@ div.tags-container div.tag span{
     background: #a52834;
     color: white;
     text-align: center;
+    width: 700px;
+    margin: auto;
 }
